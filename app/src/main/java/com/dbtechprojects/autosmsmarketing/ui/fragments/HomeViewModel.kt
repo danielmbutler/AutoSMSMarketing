@@ -9,9 +9,10 @@ import com.dbtechprojects.autosmsmarketing.db.DatabaseHandler
 import com.dbtechprojects.autosmsmarketing.db.entities.MessageItem
 import com.dbtechprojects.autosmsmarketing.db.entities.PhoneNumber
 import com.dbtechprojects.autosmsmarketing.ui.MainActivity
+import com.dbtechprojects.autosmsmarketing.util.Repository
 
 class HomeViewModel @ViewModelInject constructor(
-
+private val repository: Repository
 ) : ViewModel(
 
 ) {
@@ -21,47 +22,34 @@ class HomeViewModel @ViewModelInject constructor(
     }
     val text: LiveData<String> = _text
 
-    suspend fun updatePhoneNumber(phonenumber: PhoneNumber, context: Context){
-        val db = DatabaseHandler(context)
-        db.updatePhoneNumber(phonenumber)
+    suspend fun updatePhoneNumber(phonenumber: PhoneNumber){
+        repository.updatePhoneNumber(phonenumber)
+
     }
 
     suspend fun updateMessage(message: MessageItem, context: Context){
-        val db = DatabaseHandler(context)
-        db.updateMessage(message)
+       repository.updateMessage(message)
     }
 
 
      fun returnstring() = "test"
 
     suspend fun addmessage(message: MessageItem,context: Context){
-        val db = DatabaseHandler(context)
-        db.addMessage(message)
+        repository.addmessage(message)
     }
 
     fun getmessages(context: Context): List<MessageItem>{
-        val db = DatabaseHandler(context)
-        val list = db.getMessages()
-        if (list.isNotEmpty()){
-            return list
-        } else {
-            return emptyList()
-        }
+      val list =  repository.getmessages()
+        return list
     }
 
     fun getphonenumbers(context: Context): List<PhoneNumber>{
-        val db = DatabaseHandler(context)
-        val list = db.getPhoneNumbers()
-        if (list.isNotEmpty()){
-            return list
-        } else {
-            return emptyList()
-        }
+        val list =  repository.getphonenumbers()
+        return list
     }
 
     suspend fun deleteMessage(message: MessageItem, context: Context){
-        val db = DatabaseHandler(context)
-        db.deleteMessage(message)
+        repository.deleteMessage(message)
     }
 
 }

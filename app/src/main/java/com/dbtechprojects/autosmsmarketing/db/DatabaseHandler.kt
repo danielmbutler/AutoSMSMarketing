@@ -8,13 +8,20 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import com.dbtechprojects.autosmsmarketing.db.entities.MessageItem
 import com.dbtechprojects.autosmsmarketing.db.entities.PhoneNumber
+import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import javax.inject.Inject
 
 
 //creating the database logic, extending the SQLiteOpenHelper base class
 
-class DatabaseHandler(context: Context) :
+
+class DatabaseHandler (private val context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
+
+
 
     companion object {
         private const val DATABASE_VERSION = 14 // Database version
@@ -57,6 +64,7 @@ class DatabaseHandler(context: Context) :
     /**
      * Function to insert a Happy Place details to SQLite Database.
      */
+
     fun addPhoneNumber(phonenumber: PhoneNumber): Long {
         val db = this.writableDatabase
 
@@ -70,6 +78,7 @@ class DatabaseHandler(context: Context) :
         db.close() // Closing database connection
         return result
     }
+
 
     fun updatePhoneNumber(phonenumber: PhoneNumber):   Int {
         val db = this.writableDatabase
@@ -94,6 +103,7 @@ class DatabaseHandler(context: Context) :
     /**
      * Function to read all the list of Happy Places data which are inserted.
      */
+
     fun getPhoneNumbers(): ArrayList<PhoneNumber> {
 
         // A list is initialize using the data model class in which we will add the values from cursor.
@@ -124,6 +134,7 @@ class DatabaseHandler(context: Context) :
         }
         return happyPlaceList
     }
+
 
     fun getMessages(): ArrayList<MessageItem> {
 
@@ -159,7 +170,6 @@ class DatabaseHandler(context: Context) :
     /**
      * Function to update record
      */
-
 
     fun updateMessage(messageItem: MessageItem): Int{
 
@@ -199,6 +209,7 @@ class DatabaseHandler(context: Context) :
     /**
      * Function to delete happy place details.
      */
+
     fun deletePhoneNumber(phonenumber: PhoneNumber): Int {
         val db = this.writableDatabase
         // Deleting Row
@@ -207,6 +218,7 @@ class DatabaseHandler(context: Context) :
         db.close() // Closing database connection
         return success
     }
+
 
     fun deleteMessage(messageItem: MessageItem): Int {
         val db = this.writableDatabase

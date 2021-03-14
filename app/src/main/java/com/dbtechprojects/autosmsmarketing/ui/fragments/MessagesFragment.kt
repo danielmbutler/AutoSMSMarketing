@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dbtechprojects.autosmsmarketing.databinding.FragmentMessagesBinding
 import com.dbtechprojects.autosmsmarketing.db.entities.MessageItem
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_messages.*
 import kotlinx.android.synthetic.main.spinner.*
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +23,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
+@AndroidEntryPoint
 class MessagesFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
