@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/messagesFragment"
+    android:layout_height="match_parent"
+    android:background="@color/MainBg"
+    tools:context=".ui.fragments.MessagesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/message_deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/message_clearbutton" />
+
+        <Button
+            android:id="@+id/message_savebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="Save"
+            app:layout_constraintEnd_toEndOf="@+id/messages_form_text"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="@+id/messages_form_text"
+            app:layout_constraintTop_toBottomOf="@+id/message_deleteBtn" />
+
+        <Button
+            android:id="@+id/message_clearbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/holo_orange_light"
+            android:text="Clear"
+            app:layout_constraintEnd_toEndOf="@+id/messages_form_text"
+            app:layout_constraintStart_toStartOf="@+id/messages_form_text"
+            app:layout_constraintTop_toBottomOf="@+id/messages_form_text" />
+
+        <EditText
+            android:id="@+id/messages_form_text"
+            android:layout_width="351dp"
+            android:layout_height="347dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/white"
+            android:hint="message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messages_form_title" />
+
+        <EditText
+            android:id="@+id/messages_form_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Message Title"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/messages_form_text"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/messages_form_text"
+            app:layout_constraintTop_toBottomOf="@+id/messagesFragmentFrameLayout" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/messagesFragmentFrameLayout"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messages_Title">
+            <Spinner
+                android:id="@+id/messages_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/white"
+                 />
+
+            <ImageView
+                android:layout_gravity="end|bottom"
+                android:contentDescription="@null"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_downward_24"
+                />
+        </FrameLayout>
+
+
+
+        <TextView
+            android:id="@+id/messages_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Messages"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/messages_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+             />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
